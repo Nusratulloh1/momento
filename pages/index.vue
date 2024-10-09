@@ -24,17 +24,17 @@
 
     <!-- Phone scrolling section with pinned background -->
     <section class="h-screen phone-scroll grid lg:gap-20">
-      <div class="bg !bg-contain  lg:!bg-cover pinned-bg"></div>
+      <div class="bg !bg-black  lg:!bg-cover pinned-bg"></div>
       <div class="sticky h-[90vh] 2xl:h-screen" style="top: 0">
         <img
-          class="phone-1 w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
+          class="phone-1 w-1/2 sm:w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
           src="../assets/images/phones/1.png"
           alt="Phone 1"
         />
       </div>
       <div class="sticky h-[90vh] 2xl:h-screen" style="bottom: 0">
         <img
-          class="phone-2 w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
+          class="phone-2 w-1/2 sm:w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
           src="../assets/images/phones/2.png"
           alt="Phone 2"
         />
@@ -225,7 +225,7 @@ onMounted(() => {
 
   // Parallax effect for the phones as you scroll
   gsap.to(".phone-1", {
-    y: window.innerWidth > 640 ? window.innerWidth > 992 ? 40 : 200 : 300, // Moves the first phone upwards
+    y:  window.innerWidth > 992 ? 40 : 200 , // Moves the first phone upwards
     ease: "elastic.out", // Easing function
     scrollTrigger: {
       trigger: ".phone-scroll",
