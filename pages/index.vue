@@ -1,8 +1,8 @@
 <template>
   <div class="scroll-container">
     <!-- First section -->
-    <section class="h-[85vh] flex items-center pb-[120px] top-section">
-      <div class=" px-5 md:px-0 container lg:max-w-6xl mx-auto text-center">
+    <section class="h-[60vh] flex items-center top-section">
+      <div class="px-5 md:px-0 container lg:max-w-6xl mx-auto text-center">
         <h1
           class="text-white text-[40px] sm:text-[60px] lg:text-[80px] font-bold lg:leading-[92px] transition-all"
         >
@@ -24,7 +24,51 @@
 
     <!-- Phone scrolling section with pinned background -->
     <section class="h-screen phone-scroll grid lg:gap-20">
-      <div class="bg !bg-black  lg:!bg-cover pinned-bg"></div>
+      <div
+        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center"
+      >
+        <div>
+          <Swiper
+            class="carousel-bg"
+            :modules="modules"
+            :slides-per-view="5"
+            :loop="true"
+            :speed="3000"
+            :autoplay="{
+              delay: 0,
+              disableOnInteraction: true,
+            }"
+          >
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/1.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/2.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/3.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/4.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/5.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/6.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/7.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/8.png" alt="frames" />
+            </SwiperSlide>
+            <SwiperSlide class="h-full w-full">
+              <img src="../assets/images/frames/9.png" alt="frames" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </div>
       <div class="sticky h-[90vh] 2xl:h-screen" style="top: 0">
         <img
           class="phone-1 w-1/2 sm:w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
@@ -46,11 +90,15 @@
 
     <!-- Third section -->
 
-    <section class=" py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto text-center">
+    <section
+      class="py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto text-center"
+    >
       <h5 class="text-white font-medium font-dm-sans text-xl sm:text-3xl">
         We provide content from over 30 leading newspapers.
       </h5>
-      <div class="grid grid-cols-3 md:grid-cols-6 items-center gap-6 md:gap-12 w-full mt-10 md:mt-24">
+      <div
+        class="grid grid-cols-3 md:grid-cols-6 items-center gap-6 md:gap-12 w-full mt-10 md:mt-24"
+      >
         <img src="../assets/images/logos/1.png" alt="logos" />
         <img src="../assets/images/logos/2.png" alt="logos" />
         <img src="../assets/images/logos/3.png" alt="logos" />
@@ -65,13 +113,15 @@
           <template v-for="phone in phones" :key="phone.index">
             <img
               v-if="phone.index == activePhone"
-              :class="`phones-${activePhone + 1} w-[40%] sm:w-[30%] md:w-[50%] m-auto`"
+              :class="`phones-${
+                activePhone + 1
+              } w-[40%] sm:w-[30%] md:w-[50%] m-auto`"
               :src="phone.img"
               alt="phones"
             />
           </template>
           <div class="relative">
-            <div class=" h-[220px] sm:h-[280px] md:h-[320px]">
+            <div class="h-[220px] sm:h-[280px] md:h-[320px]">
               <div v-for="phone in phones" :key="phone.index">
                 <div v-if="phone.index == activePhone">
                   <h4
@@ -91,7 +141,9 @@
                 </div>
               </div>
             </div>
-            <div class="flex items-center justify-center w-full md:justify-start flex-wrap gap-4 absolute">
+            <div
+              class="flex items-center justify-center w-full md:justify-start flex-wrap gap-4 absolute"
+            >
               <button
                 @click="changePhone(i)"
                 v-for="(menu, i) in menus"
@@ -109,8 +161,10 @@
     <section class="h-screen"></section>
     <section class="h-screen sm:mt-10 flex items-center">
       <div class="px-5 md:px-0 container mx-auto xl:max-w-screen-xl">
-        <div class="flex items-center flex-wrap md:flex-nowrap justify-center md:justify-between gap-20 sm:gap-24">
-          <Logo class=" w-1/2  md:w-[471px]" />
+        <div
+          class="flex items-center flex-wrap md:flex-nowrap justify-center md:justify-between gap-20 sm:gap-24"
+        >
+          <Logo class="w-1/2 md:w-[471px]" />
           <h6
             class="font-semibold font-dm-sans text-center text-4xl sm:text-6xl lg:text-[84px] md:leading-[92px] text-white max-w-[547px]"
           >
@@ -124,8 +178,13 @@
 
 <script lang="ts" setup>
 import { onMounted, watch } from "vue";
+// import  from "nuxt-swiper/";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay } from "swiper/modules";
+// Import Swiper styles
+import "swiper/css";
 import Logo from "~/components/Logo.vue";
 import img3 from "../assets/images/phones/3.png";
 import img4 from "../assets/images/phones/4.png";
@@ -156,6 +215,7 @@ const phones = [
     img: img5,
   },
 ];
+modules: [Autoplay];
 // watch(activePhone, (newValue, oldValue) => {
 //   if (newValue !== oldValue) {
 //     changePhone(newValue);
@@ -213,7 +273,6 @@ const changePhone = (index: number) => {
   );
 };
 onMounted(() => {
-
   // Pin the background image for the entire duration of the phone-scroll section
   ScrollTrigger.create({
     trigger: ".phone-scroll",
@@ -225,7 +284,7 @@ onMounted(() => {
 
   // Parallax effect for the phones as you scroll
   gsap.to(".phone-1", {
-    y:  window.innerWidth > 992 ? 40 : 200 , // Moves the first phone upwards
+    y: window.innerWidth > 992 ? 40 : 200, // Moves the first phone upwards
     ease: "elastic.out", // Easing function
     scrollTrigger: {
       trigger: ".phone-scroll",
@@ -289,7 +348,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("../assets/images/body.jpg") no-repeat center center;
+  // background: url("../assets/images/body.jpg") no-repeat center center;
   background-size: cover;
   z-index: -1;
   /* Ensure background is behind content */
@@ -304,5 +363,12 @@ onMounted(() => {
   position: relative;
   will-change: transform;
   /* For smoother scrolling animations */
+}
+.carousel-bg {
+  img {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+  }
 }
 </style>
