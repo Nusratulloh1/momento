@@ -5,9 +5,7 @@
           ref="contentWrapper"
           class="flex items-center flex-wrap md:flex-nowrap justify-center md:justify-between gap-20 sm:gap-24"
         >
-          <div ref="logo">
-            <LogoAnim ref="logo" class="w-1/2 md:w-[471px]" />
-          </div>
+            <LogoAnim ref="logo" class="w-1/2 !mx-auto md:w-[471px]" />
           <h6
             ref="headline"
             class="font-semibold font-dm-sans text-center text-4xl sm:text-6xl lg:text-[84px] md:leading-[92px] text-white max-w-[547px]"

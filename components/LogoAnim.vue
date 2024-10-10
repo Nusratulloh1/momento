@@ -1,6 +1,6 @@
 <template>
     <svg
-      class="spinner"
+      class="spinner !mx-auto"
       viewBox="0 0 94 92"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
