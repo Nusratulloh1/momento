@@ -23,69 +23,31 @@
     </section>
 
     <!-- Phone scrolling section with pinned background -->
-    <section class="h-screen phone-scroll grid lg:gap-20">
+    <section class=" h-50vh sm:h-screen phone-scroll grid lg:gap-20">
       <div
-        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center"
+        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-32  overflow-hidden"
       >
-        <div>
-          <Swiper
-            class="carousel-bg"
-            :modules="modules"
-            :slides-per-view="5"
-            :loop="true"
-            :speed="3000"
-            :autoplay="{
-              delay: 0,
-              disableOnInteraction: true,
-            }"
-          >
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/1.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/2.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/3.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/4.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/5.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/6.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/7.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/8.png" alt="frames" />
-            </SwiperSlide>
-            <SwiperSlide class="h-full w-full">
-              <img src="../assets/images/frames/9.png" alt="frames" />
-            </SwiperSlide>
-          </Swiper>
-        </div>
+<Slider   />
+<Slider2 />
+          
       </div>
       <div class="sticky h-[90vh] 2xl:h-screen" style="top: 0">
         <img
-          class="phone-1 w-1/2 sm:w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
+          class="phone-1 w-1/2 sm:w-[23%] lg:w-[27%] xl:w-[22%] mx-auto"
           src="../assets/images/phones/1.png"
           alt="Phone 1"
         />
       </div>
       <div class="sticky h-[90vh] 2xl:h-screen" style="bottom: 0">
         <img
-          class="phone-2 w-1/2 sm:w-[23%] lg:w-[27%] 2xl:w-[22%] mx-auto"
+          class="phone-2 w-1/2 sm:w-[23%] lg:w-[27%] xl:w-[22%] mx-auto"
           src="../assets/images/phones/2.png"
           alt="Phone 2"
         />
       </div>
     </section>
 
-    <section class="h-screen"></section>
+    <section class="h-screen hidden sm:block"></section>
     <!-- <section class="h-screen"></section> -->
 
     <!-- Third section -->
@@ -178,17 +140,19 @@
 
 <script lang="ts" setup>
 import { onMounted, watch } from "vue";
+
 // import  from "nuxt-swiper/";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay } from "swiper/modules";
+import Slider from "../components/Slider.vue"
+import Slider2 from "../components/Slider2.vue"
 // Import Swiper styles
 import "swiper/css";
 import Logo from "~/components/Logo.vue";
 import img3 from "../assets/images/phones/3.png";
 import img4 from "../assets/images/phones/4.png";
 import img5 from "../assets/images/phones/5.png";
+
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,7 +179,6 @@ const phones = [
     img: img5,
   },
 ];
-modules: [Autoplay];
 // watch(activePhone, (newValue, oldValue) => {
 //   if (newValue !== oldValue) {
 //     changePhone(newValue);
@@ -284,7 +247,7 @@ onMounted(() => {
 
   // Parallax effect for the phones as you scroll
   gsap.to(".phone-1", {
-    y: window.innerWidth > 992 ? 40 : 200, // Moves the first phone upwards
+    y:  40, // Moves the first phone upwards
     ease: "elastic.out", // Easing function
     scrollTrigger: {
       trigger: ".phone-scroll",
@@ -295,7 +258,7 @@ onMounted(() => {
   });
 
   gsap.to(".phone-2", {
-    y: window.innerWidth > 992 ? 0 : 400, // Moves the second phone upwards with more intensity
+    y:  0 , // Moves the second phone upwards with more intensity
     ease: "elastic.out", // Easing function
     scrollTrigger: {
       trigger: ".phone-scroll",
@@ -363,12 +326,5 @@ onMounted(() => {
   position: relative;
   will-change: transform;
   /* For smoother scrolling animations */
-}
-.carousel-bg {
-  img {
-    width: 130px;
-    height: 130px;
-    margin: auto;
-  }
 }
 </style>
