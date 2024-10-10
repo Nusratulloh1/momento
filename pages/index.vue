@@ -1,7 +1,7 @@
 <template>
   <div class="scroll-container">
     <!-- First section -->
-    <section class="h-[60vh] flex items-center top-section">
+    <section class=" h-[60vh] flex items-center top-section">
       <div class="px-5 md:px-0 container lg:max-w-6xl mx-auto text-center">
         <h1
           class="text-white text-[40px] sm:text-[60px] lg:text-[80px] font-bold lg:leading-[92px] transition-all"
@@ -23,7 +23,7 @@
     </section>
 
     <!-- Phone scrolling section with pinned background -->
-    <section class=" h-50vh sm:h-screen phone-scroll grid lg:gap-20">
+    <section class=" h-screen phone-scroll grid lg:gap-20">
       <div
         class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-32  overflow-hidden"
       >
@@ -31,23 +31,23 @@
 <Slider2 />
           
       </div>
-      <div class="sticky h-[90vh] 2xl:h-screen" style="top: 0">
+      <div class="sticky h-screen" >
         <img
-          class="phone-1 w-1/2 sm:w-[23%] lg:w-[27%] xl:w-[22%] mx-auto"
+          class="phone-1 mt-[22%] md:mt-auto w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
           src="../assets/images/phones/1.png"
           alt="Phone 1"
         />
       </div>
-      <div class="sticky h-[90vh] 2xl:h-screen" style="bottom: 0">
+      <div class="sticky  h-screen" style="bottom: 0">
         <img
-          class="phone-2 w-1/2 sm:w-[23%] lg:w-[27%] xl:w-[22%] mx-auto"
+          class="phone-2 mt-[22%] md:mt-auto w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
           src="../assets/images/phones/2.png"
           alt="Phone 2"
         />
       </div>
     </section>
 
-    <section class="h-screen hidden sm:block"></section>
+    <section class="h-screen "></section>
     <!-- <section class="h-screen"></section> -->
 
     <!-- Third section -->
@@ -69,8 +69,8 @@
         <img src="../assets/images/logos/6.png" alt="logos" />
       </div>
     </section>
-    <section class="h-screen mt-10 flex items-center phone-changer">
-      <div class="py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto">
+    <section class=" h-[90vh] sm:h-screen mt-10 flex items-center phone-changer">
+      <div class="py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto">
         <div class="grid md:grid-cols-2 items-center gap-10 md:gap-0 lg:gap-6">
           <template v-for="phone in phones" :key="phone.index">
             <img
