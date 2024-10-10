@@ -1,7 +1,7 @@
 <template>
   <div class="scroll-container">
     <!-- First section -->
-    <section class=" h-[60vh] flex items-center top-section">
+    <!-- <section class=" h-[60vh] flex items-center top-section">
       <div class="px-5 md:px-0 container lg:max-w-6xl mx-auto text-center">
         <h1
           class="text-white text-[40px] sm:text-[60px] lg:text-[80px] font-bold lg:leading-[92px] transition-all"
@@ -20,8 +20,8 @@
           Download Momento
         </button>
       </div>
-    </section>
-
+    </section> -->
+<TopSection />
     <!-- Phone scrolling section with pinned background -->
     <section class=" h-screen phone-scroll grid lg:gap-20">
       <div
@@ -51,24 +51,8 @@
     <!-- <section class="h-screen"></section> -->
 
     <!-- Third section -->
+    <Brends />
 
-    <section
-      class="py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto text-center"
-    >
-      <h5 class="text-white font-medium font-dm-sans text-xl sm:text-3xl">
-        We provide content from over 30 leading newspapers.
-      </h5>
-      <div
-        class="grid grid-cols-3 md:grid-cols-6 items-center gap-6 md:gap-12 w-full mt-10 md:mt-24"
-      >
-        <img src="../assets/images/logos/1.png" alt="logos" />
-        <img src="../assets/images/logos/2.png" alt="logos" />
-        <img src="../assets/images/logos/3.png" alt="logos" />
-        <img src="../assets/images/logos/4.png" alt="logos" />
-        <img src="../assets/images/logos/5.png" alt="logos" />
-        <img src="../assets/images/logos/6.png" alt="logos" />
-      </div>
-    </section>
     <section class=" h-[90vh] sm:h-screen mt-10 flex items-center phone-changer">
       <div class="py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto">
         <div class="grid md:grid-cols-2 items-center gap-10 md:gap-0 lg:gap-6">
@@ -121,20 +105,7 @@
       </div>
     </section>
     <section class="h-screen"></section>
-    <section class="h-screen sm:mt-10 flex items-center">
-      <div class="px-5 md:px-0 container mx-auto xl:max-w-screen-xl">
-        <div
-          class="flex items-center flex-wrap md:flex-nowrap justify-center md:justify-between gap-20 sm:gap-24"
-        >
-          <Logo class="w-1/2 md:w-[471px]" />
-          <h6
-            class="font-semibold font-dm-sans text-center text-4xl sm:text-6xl lg:text-[84px] md:leading-[92px] text-white max-w-[547px]"
-          >
-            Stay in touch with the world.
-          </h6>
-        </div>
-      </div>
-    </section>
+    <Bottom />
   </div>
 </template>
 
@@ -146,6 +117,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Slider from "../components/Slider.vue"
 import Slider2 from "../components/Slider2.vue"
+import Brends from "~/components/Brends.vue";
+import Bottom from "~/components/Bottom.vue"
+import TopSection from "~/components/TopSection.vue";
 // Import Swiper styles
 import "swiper/css";
 import Logo from "~/components/Logo.vue";

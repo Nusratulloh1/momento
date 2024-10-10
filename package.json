@@ -37,6 +37,7 @@
     "pinia": "^2.0.34",
     "smooth-scrollbar": "^8.8.4",
     "swiper": "^11.1.14",
+    "typed.js": "^2.1.0",
     "vue-i18n": "^9.2.2"
   }
 }
