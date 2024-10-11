@@ -4,7 +4,7 @@
     <!-- Phone scrolling section with pinned background -->
     <section class=" h-[500px] sm:h-screen phone-scroll grid lg:gap-20">
       <div
-        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-40 pb-20 overflow-hidden"
+        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-40 pt-5 overflow-hidden"
       >
         <Slider />
         <Slider2 />
