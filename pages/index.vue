@@ -1,60 +1,38 @@
 <template>
   <div class="scroll-container">
-    <!-- First section -->
-    <!-- <section class=" h-[60vh] flex items-center top-section">
-      <div class="px-5 md:px-0 container lg:max-w-6xl mx-auto text-center">
-        <h1
-          class="text-white text-[40px] sm:text-[60px] lg:text-[80px] font-bold lg:leading-[92px] transition-all"
-        >
-          All news, like a moments
-        </h1>
-        <p
-          class="text-[#838383] max-w-[869px] mx-auto !font-dm-sans text-base sm:text-lg lg:text-[31px] lg:leading-[42px] font-normal mt-4 transition-all"
-        >
-          With our advanced AI technology, we present news as concise moments,
-          making it easier than ever to stay connected with the world.
-        </p>
-        <button
-          class="mt-16 text-black bg-white rounded-full py-3 sm:py-4 px-5 sm:px-7 font-bold font-dm-sans hover:opacity-90 transition-all sm:text-xl"
-        >
-          Download Momento
-        </button>
-      </div>
-    </section> -->
-<TopSection />
+    <TopSection />
     <!-- Phone scrolling section with pinned background -->
-    <section class=" h-screen phone-scroll grid lg:gap-20">
+    <section class=" h-[500px] sm:h-screen phone-scroll grid lg:gap-20">
       <div
-        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-32  overflow-hidden"
+        class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-40 pb-20 overflow-hidden"
       >
-<Slider   />
-<Slider2 />
-          
+        <Slider />
+        <Slider2 />
       </div>
-      <div class="sticky h-screen" >
-        <img
-          class="phone-1 mt-[22%] md:mt-auto w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
-          src="../assets/images/phones/1.png"
-          alt="Phone 1"
-        />
-      </div>
-      <div class="sticky  h-screen" style="bottom: 0">
-        <img
-          class="phone-2 mt-[22%] md:mt-auto w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
-          src="../assets/images/phones/2.png"
-          alt="Phone 2"
-        />
-      </div>
+      <img
+        v-if="activeTopImg == 1"
+        class="phone-1 w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
+        src="../assets/images/phones/1.png"
+        alt="Phone 1"
+      />
+      <img
+        v-if="activeTopImg == 2"
+        class="phone-2 w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
+        src="../assets/images/phones/2.png"
+        alt="Phone 2"
+      />
     </section>
 
-    <section class="h-screen "></section>
+    <!-- <section class="h-screen"></section> -->
     <!-- <section class="h-screen"></section> -->
 
     <!-- Third section -->
     <Brends />
 
-    <section class=" h-[90vh] sm:h-screen mt-10 flex items-center phone-changer">
-      <div class="py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto">
+    <section class="h-[90vh] sm:h-screen mt-10 flex items-center phone-changer">
+      <div
+        class="py-10 sm:py-40 px-5 md:px-0 container xl:max-w-screen-xl mx-auto"
+      >
         <div class="grid md:grid-cols-2 items-center gap-10 md:gap-0 lg:gap-6">
           <template v-for="phone in phones" :key="phone.index">
             <img
@@ -115,18 +93,15 @@ import { onMounted, watch } from "vue";
 // import  from "nuxt-swiper/";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Slider from "../components/Slider.vue"
-import Slider2 from "../components/Slider2.vue"
+import Slider from "../components/Slider.vue";
+import Slider2 from "../components/Slider2.vue";
 import Brends from "~/components/Brends.vue";
-import Bottom from "~/components/Bottom.vue"
+import Bottom from "~/components/Bottom.vue";
 import TopSection from "~/components/TopSection.vue";
-// Import Swiper styles
-import "swiper/css";
-import Logo from "~/components/Logo.vue";
 import img3 from "../assets/images/phones/3.png";
 import img4 from "../assets/images/phones/4.png";
 import img5 from "../assets/images/phones/5.png";
-
+const activeTopImg = ref(1);
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -209,49 +184,35 @@ const changePhone = (index: number) => {
     }
   );
 };
+const changeTopImg = (index: number) => {
+  // Fade out current image
+  gsap.to(`.phone-${activeTopImg.value}`, {
+    opacity: 0,
+    duration: 0.5,
+    scale: 0.9,
+    ease: "power2.out",
+    onComplete: () => {
+      activeTopImg.value = index; // Update to new image
+
+      // Fade in new image with scale effect
+      gsap.fromTo(
+        `.phone-${activeTopImg.value}`,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
+      );
+    },
+  });
+};
 onMounted(() => {
-  // Pin the background image for the entire duration of the phone-scroll section
-  ScrollTrigger.create({
-    trigger: ".phone-scroll",
-    start: "top top",
-    end: "bottom top",
-    pin: ".pinned-bg", // Pin the background element
-    scrub: true,
-  });
-
-  // Parallax effect for the phones as you scroll
-  gsap.to(".phone-1", {
-    y:  40, // Moves the first phone upwards
-    ease: "elastic.out", // Easing function
-    scrollTrigger: {
-      trigger: ".phone-scroll",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true, // Makes it move based on scroll
-    },
-  });
-
-  gsap.to(".phone-2", {
-    y:  0 , // Moves the second phone upwards with more intensity
-    ease: "elastic.out", // Easing function
-    scrollTrigger: {
-      trigger: ".phone-scroll",
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  });
   const phoneChangerTrigger = ScrollTrigger.create({
     trigger: ".phone-changer",
-    start: "top top", // Start pinning when the top of the section hits the top of the viewport
-    end: "bottom top", // Stop pinning when the bottom of the section hits the top of the viewport
-    pin: true, // Pin this section
-    pinSpacing: false, // Don't add spacing when pinned
+    start: "top top",
+    end: "bottom top",
+    pin: true,
+    pinSpacing: false,
     onUpdate: (self) => {
-      // Calculate the scroll progress
-      const progress: any = self.progress.toFixed(2); // Progress value from 0 to 1
+      const progress: any = self.progress.toFixed(2);
 
-      // Determine which phone to show based on progress
       if (progress >= 0 && progress < 0.33) {
         if (activePhone.value !== 0) {
           changePhone(0);
@@ -263,6 +224,25 @@ onMounted(() => {
       } else if (progress >= 0.66 && progress <= 1) {
         if (activePhone.value !== 2) {
           changePhone(2);
+        }
+      }
+    },
+  });
+  ScrollTrigger.create({
+    trigger: ".phone-scroll",
+    start: "top center",
+    end: "bottom top",
+    scrub: true,
+    onUpdate: (self) => {
+      const progress: any = self.progress.toFixed(2);
+
+      if (progress >= 0 && progress < 0.3) {
+        if (activeTopImg.value !== 1) {
+          changeTopImg(1);
+        }
+      } else if (progress >= 0.3) {
+        if (activeTopImg.value !== 2) {
+          changeTopImg(2);
         }
       }
     },
@@ -298,7 +278,8 @@ onMounted(() => {
 .phone-1,
 .phone-2 {
   position: relative;
-  will-change: transform;
-  /* For smoother scrolling animations */
+  will-change: transform, opacity;
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
 }
 </style>
