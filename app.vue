@@ -18,20 +18,16 @@
 import { ref, onMounted } from 'vue';
 import LoadingSpinner from './components/LoadingSpinner.vue';
 const isLoading = ref(true);
-const layoutKey = ref(0); // To force layout re-render on navigation
+const layoutKey = ref(0)
 const route = useRoute()
-// Show loading screen for a certain duration (e.g., 3 seconds)
 onMounted(() => {
   setTimeout(() => {
     isLoading.value = false;
-  }, 3000); // 3000 milliseconds = 3 seconds
+  }, 1000);
 });
-
-// Watch for route changes to reset the loading screen
 watch(() => route.path, () => {
   isLoading.value = true;
-  layoutKey.value++; // Update key to force re-render
-  // Optionally reset timeout if needed
+  layoutKey.value++;
 });
   
   </script>

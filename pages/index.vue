@@ -39,7 +39,7 @@
               v-if="phone.index == activePhone"
               :class="`phones-${
                 activePhone + 1
-              } w-[40%] sm:w-[30%] md:w-[50%] m-auto`"
+              } w-[40%] sm:w-[30%] md:w-[50%] m-auto max-h-[700px]`"
               :src="phone.img"
               alt="phones"
             />
@@ -186,22 +186,23 @@ const changePhone = (index: number) => {
 };
 const changeTopImg = (index: number) => {
   // Fade out current image
-  gsap.to(`.phone-${activeTopImg.value}`, {
-    opacity: 0,
-    duration: 0.5,
-    scale: 0.9,
-    ease: "power2.out",
-    onComplete: () => {
-      activeTopImg.value = index; // Update to new image
+  activeTopImg.value = index
+  // gsap.to(`.phone-${activeTopImg.value}`, {
+  //   opacity: 0,
+  //   duration: 0.5,
+  //   scale: 0.9,
+  //   ease: "power2.out",
+  //   onComplete: () => {
+  //     activeTopImg.value = index; // Update to new image
 
-      // Fade in new image with scale effect
-      gsap.fromTo(
-        `.phone-${activeTopImg.value}`,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
-      );
-    },
-  });
+  //     // Fade in new image with scale effect
+  //     gsap.fromTo(
+  //       `.phone-${activeTopImg.value}`,
+  //       { opacity: 0, scale: 0.9 },
+  //       { opacity: 1, scale: 1, duration: 1, ease: "power2.out" }
+  //     );
+  //   },
+  // });
 };
 onMounted(() => {
   const phoneChangerTrigger = ScrollTrigger.create({
