@@ -7,9 +7,10 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
-          class=" w-4 sm:w-6 h-6"
-          src="../assets/images/icons/linkedin.svg"
+        <NuxtImg
+          sizes="100vw sm:50vw"
+          class="w-4 sm:w-6 h-6"
+          src="/images/icons/linkedin.svg"
           alt=""
         />
       </a>
@@ -21,7 +22,12 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img class="w-4 sm:w-6 h-6" src="../assets/images/icons/x.svg" alt="" />
+        <NuxtImg
+          sizes="100vw sm:50vw"
+          class="w-4 sm:w-6 h-6"
+          src="/images/icons/x.svg"
+          alt=""
+        />
       </a>
     </li>
     <li>
@@ -31,9 +37,10 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img
+        <NuxtImg
+          sizes="100vw sm:50vw"
           class="w-4 sm:w-6 h-6"
-          src="../assets/images/icons/telegram.svg"
+          src="/images/icons/telegram.svg"
           alt=""
         />
       </a>

@@ -9,12 +9,12 @@
         ref="logosWrapper"
         class="grid grid-cols-3 md:grid-cols-6 items-center gap-6 md:gap-12 w-full mt-10 md:mt-24"
       >
-        <img src="../assets/images/logos/1.png" alt="logos" />
-        <img src="../assets/images/logos/2.png" alt="logos" />
-        <img src="../assets/images/logos/3.png" alt="logos" />
-        <img src="../assets/images/logos/4.png" alt="logos" />
-        <img src="../assets/images/logos/5.png" alt="logos" />
-        <img src="../assets/images/logos/6.png" alt="logos" />
+        <NuxtImg sizes="100vw sm:50vw" src="/images/logos/1.png" alt="logos" />
+        <NuxtImg sizes="100vw sm:50vw" src="/images/logos/2.png" alt="logos" />
+        <NuxtImg sizes="100vw sm:50vw" src="/images/logos/3.png" alt="logos" />
+        <NuxtImg sizes="100vw sm:50vw" src="/images/logos/4.png" alt="logos" />
+        <NuxtImg sizes="100vw sm:50vw" src="/images/logos/5.png" alt="logos" />
+        <NuxtImg sizes="100vw sm:50vw" src="/images/logos/6.png" alt="logos" />
       </div>
     </section>
   </template>

@@ -3,7 +3,7 @@
       <div class="wrapper">
         <!-- Render the images twice for seamless looping -->
         <div v-for="(image, index) in duplicatedImages" :key="index" class="box">
-          <img :src="image" alt="frame" class="frame-image" />
+          <NuxtImg sizes="100vw sm:50vw" :src="image" alt="frame" class="frame-image" />
         </div>
       </div>
     </div>
@@ -14,15 +14,15 @@
   import gsap from "gsap";
   
   // Importing the images
-  import image1 from "../assets/images/frames/1.png";
-  import image2 from "../assets/images/frames/2.png";
-  import image3 from "../assets/images/frames/3.png";
-  import image4 from "../assets/images/frames/4.png";
-  import image5 from "../assets/images/frames/5.png";
-  import image6 from "../assets/images/frames/6.png";
-  import image7 from "../assets/images/frames/7.png";
-  import image8 from "../assets/images/frames/8.png";
-  import image9 from "../assets/images/frames/9.png";
+  import image1 from "/images/frames/1.png";
+  import image2 from "/images/frames/2.png";
+  import image3 from "/images/frames/3.png";
+  import image4 from "/images/frames/4.png";
+  import image5 from "/images/frames/5.png";
+  import image6 from "/images/frames/6.png";
+  import image7 from "/images/frames/7.png";
+  import image8 from "/images/frames/8.png";
+  import image9 from "/images/frames/9.png";
   
   // List of frame images
   const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9];

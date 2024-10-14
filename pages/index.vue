@@ -2,23 +2,25 @@
   <div class="scroll-container">
     <TopSection />
     <!-- Phone scrolling section with pinned background -->
-    <section class=" h-[500px] sm:h-screen phone-scroll grid lg:gap-20">
+    <section class="h-[500px] sm:h-screen phone-scroll grid lg:gap-20">
       <div
         class="bg !bg-black lg:!bg-cover pinned-bg flex flex-col justify-center gap-20 sm:gap-40 pt-5 overflow-hidden"
       >
         <Slider />
         <Slider2 />
       </div>
-      <img
+      <NuxtImg
+        sizes="100vw sm:50vw"
         v-if="activeTopImg == 1"
         class="phone-1 w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
-        src="../assets/images/phones/1.png"
+        src="/images/phones/1.png"
         alt="Phone 1"
       />
-      <img
+      <NuxtImg
+        sizes="100vw sm:50vw"
         v-if="activeTopImg == 2"
         class="phone-2 w-1/2 sm:w-[30%] lg:w-[27%] xl:w-[22%] mx-auto"
-        src="../assets/images/phones/2.png"
+        src="/images/phones/2.png"
         alt="Phone 2"
       />
     </section>
@@ -35,7 +37,8 @@
       >
         <div class="grid md:grid-cols-2 items-center gap-10 md:gap-0 lg:gap-6">
           <template v-for="phone in phones" :key="phone.index">
-            <img
+            <NuxtImg
+              sizes="100vw sm:50vw"
               v-if="phone.index == activePhone"
               :class="`phones-${
                 activePhone + 1
@@ -98,9 +101,9 @@ import Slider2 from "../components/Slider2.vue";
 import Brends from "~/components/Brends.vue";
 import Bottom from "~/components/Bottom.vue";
 import TopSection from "~/components/TopSection.vue";
-import img3 from "../assets/images/phones/3.png";
-import img4 from "../assets/images/phones/4.png";
-import img5 from "../assets/images/phones/5.png";
+import img3 from "/images/phones/3.png";
+import img4 from "/images/phones/4.png";
+import img5 from "/images/phones/5.png";
 const activeTopImg = ref(1);
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -186,7 +189,7 @@ const changePhone = (index: number) => {
 };
 const changeTopImg = (index: number) => {
   // Fade out current image
-  activeTopImg.value = index
+  activeTopImg.value = index;
   // gsap.to(`.phone-${activeTopImg.value}`, {
   //   opacity: 0,
   //   duration: 0.5,
